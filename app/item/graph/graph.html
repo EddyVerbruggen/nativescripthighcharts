@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="margin: 0">
+<script src="js/highcharts.js"></script>
+
+<div id="container" style="width: 100%; height: 180px; margin: 0 auto"></div>
+
+<script>
+  // settings are passed through url (KISS)
+  var loc = document.location.href;
+  var settings = JSON.parse(decodeURI(loc.substring(loc.indexOf("?") + 1)));
+
+  // Tweak this layout here: http://jsfiddle.net/y4tv0hkr/5/
+  Highcharts.chart('container', {
+    title: {
+      text: ''
+    },
+    accessibility: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    },
+    credits: {
+      enabled: false
+    },
+    legend: {
+      enabled: false
+    },
+    yAxis: {
+      visible: false
+    },
+    xAxis: {
+      labels: {
+        step: 3
+      },
+      tickmarkPlacement: 'on',
+      categories: settings.xAxisCategories
+    },
+    series: [{
+      type: 'column',
+      color: '#C7CEDA',
+      pointPadding: 0,
+      groupPadding: 0.13,
+      name: 'Revenue',
+      data: settings.columnSeriesData
+    }, {
+      type: 'line',
+      color: '#ED2157',
+      lineWidth: 3,
+      data: settings.lineSeriesData,
+      name: 'Trend',
+      marker: {
+        enabled: false
+      }
+    }]
+  });
+</script>
+</body>
+</html>
