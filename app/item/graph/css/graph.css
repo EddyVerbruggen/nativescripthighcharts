@@ -1,0 +1,4 @@
+.highcharts-axis-labels {
+  /* if your app has a custom font, use the same names here */
+  font-family: 'Source Sans Pro', SourceSansPro-Regular, system, sans-serif;
+}
