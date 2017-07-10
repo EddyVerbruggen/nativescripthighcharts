@@ -1,3 +1,6 @@
 .idea/
 platforms/
 node_modules/
+hooks/
+*.js
+!app/item/graph/js/*.js
