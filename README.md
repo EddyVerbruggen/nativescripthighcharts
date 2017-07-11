@@ -21,3 +21,6 @@ tns run [ios|android]
 * [Add a `WebView` to your view](https://github.com/EddyVerbruggen/nativescripthighcharts/blob/18f4799f2a7e2b83c16e7ef77336099a06428acf/app/item/items.component.html#L6).
 * [Wire it in your Component](app/item/items.component.ts) (Angular demo, but you get the idea).
 * You can [parameterize the JS snippet in your webview](https://github.com/EddyVerbruggen/nativescripthighcharts/blob/18f4799f2a7e2b83c16e7ef77336099a06428acf/app/item/graph/graph.html#L43) and [pass the data from your Angular component](https://github.com/EddyVerbruggen/nativescripthighcharts/blob/18f4799f2a7e2b83c16e7ef77336099a06428acf/app/item/items.component.ts#L20). 
+
+### Want a pure native solution?
+Be sure to check out [NativeScript UI's Chart component](http://www.telerik.com/nativescript-ui/chart)!
