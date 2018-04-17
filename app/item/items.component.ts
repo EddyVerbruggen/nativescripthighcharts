@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import * as fs from "tns-core-modules/file-system";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { WebView } from "tns-core-modules/ui/web-view";
 
 @Component({
   selector: "ns-items",
@@ -7,8 +7,8 @@ import * as fs from "tns-core-modules/file-system";
   templateUrl: "./items.component.html",
 })
 export class ItemsComponent implements OnInit {
-  graphUrl1: string = null;
-  graphUrl2: string = null;
+  @ViewChild("webview1") webview1: ElementRef;
+  @ViewChild("webview2") webview2: ElementRef;
 
   ngOnInit(): void {
     this.renderGraph1();
@@ -21,8 +21,9 @@ export class ItemsComponent implements OnInit {
       columnSeriesData: [0, 0, 0, 1, 2, 4, 8, 7, 7, 7, 3, 1, 1, 0, 1, 0, 0],
       lineSeriesData: [null, null, 0, 1, 2, 4, 8, 7, 7, 7, 3, 1, 1, 0, 1, 0, null]
     };
-    // Note that when https://github.com/NativeScript/NativeScript/issues/4443 is fixed you can use a relative url (without the 'fs' module)
-    this.graphUrl1 = encodeURI(`${fs.knownFolders.currentApp().path}/item/graph/graph.html?${JSON.stringify(data)}`);
+
+    const graphwebview: WebView = this.webview1.nativeElement;
+    graphwebview.src = `~/item/graph/graph.html?${JSON.stringify(data)}`;
   }
 
   private renderGraph2(): void {
@@ -30,6 +31,8 @@ export class ItemsComponent implements OnInit {
       xAxisCategories: ['6:00', '8:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00', '24:00'],
       columnSeriesData: [2, 10, 20, 30, 30, 23, 13, 4, -8, 10]
     };
-    this.graphUrl2 = encodeURI(`${fs.knownFolders.currentApp().path}/item/graph/graph.html?${JSON.stringify(data)}`);
+
+    const graphwebview: WebView = this.webview2.nativeElement;
+    graphwebview.src = `~/item/graph/graph.html?${JSON.stringify(data)}`;
   }
 }
